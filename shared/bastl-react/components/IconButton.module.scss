@@ -1,0 +1,36 @@
+/* SPDX-License-Identifier: MIT */
+/* Copyright (c) 2025 Vaclav Mach (Bastl Instruments) */
+
+@use "@bastl-react/styles-base" as *;
+
+.iconButton {
+    @include buttonReset();
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    svg {
+        display: block;
+        width: 1em;
+    }
+
+    &.disabled {
+        cursor: not-allowed;
+
+        svg {
+            opacity: 0.33;
+        }
+    }
+
+    &.inactive {
+        svg {
+            opacity: 0.33;
+        }
+    }
+}
+
+.label {
+    padding-left: 0.6em;
+}

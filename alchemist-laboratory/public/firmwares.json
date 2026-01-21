@@ -1,0 +1,13 @@
+{
+    "list": [
+        {
+            "filename": "firmwares/kastle2-alchemist-1.5.uf2",
+            "output": "kastle2-alchemist-1.5-custom.uf2"
+        },
+        {
+            "default": true,
+            "filename": "firmwares/kastle2-alchemist-1.6.uf2",
+            "output": "kastle2-alchemist-1.6-custom.uf2"
+        }
+    ]
+}

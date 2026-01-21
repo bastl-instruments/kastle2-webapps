@@ -1,0 +1,115 @@
+/* SPDX-License-Identifier: MIT */
+/* Copyright (c) 2025 Vaclav Mach (Bastl Instruments) */
+
+@use "sass:map";
+
+$light-bg-color: #3b3c3b;
+$dark-bg-color: #272727;
+$error-color: #e31126;
+$primary-color: #ffed33;
+$green-color: #009d4e;
+
+$secondary-color: #2869fb;
+$selection-color: #fff;
+$selection-bg-color: $secondary-color;
+
+$border-color: #fff;
+
+$font-family: "Azeret Mono", monospace;
+
+$border-width: 2px;
+$border-radius: 1em;
+$input-height: 2.4em;
+$padding-vertical: 0.3em;
+$padding-horizontal: 1.3em;
+$input-gap: 1.5em;
+
+$breakpoints: (
+    medium: 480px,
+    large: 960px,
+    xlarge: 1180px,
+    xxlarge: 1380px
+);
+
+.no-select {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.tooltip {
+    --rt-opacity: 1.0 !important;
+    border-radius: 0 !important;
+    z-index: 1000 !important;
+    pointer-events: auto !important;
+    padding: 0.8em !important;
+    font-size: inherit !important;
+    box-shadow: 0px 0px 1.5em 0 rgba(0, 0, 0, 0.3);
+    background-color: #fff !important;
+    color: #000 !important;
+    line-height: 1.1 !important;
+    font-weight: normal !important;
+    border-radius: $border-radius !important;
+    @extend .no-select;
+}
+
+@mixin headerFont {
+    font-family: "Archivo", "Arial Black", Impact, Haettenschweiler, sans-serif;
+    text-transform: uppercase;
+    font-optical-sizing: auto;
+    font-weight: 800;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 125;
+}
+
+@mixin buttonReset {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font-size: inherit;
+    font-family: inherit;
+    color: inherit;
+    text-align: inherit;
+    text-decoration: none;
+    // cursor: pointer;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+@mixin touchDragHandle {
+    touch-action: none;
+}
+
+@mixin media($size) {
+    @if map.has-key($breakpoints, $size) {
+        @media (min-width: #{map.get($breakpoints, $size)}) {
+            @content;
+        }
+    }
+
+    @else {
+        @warn "Breakpoint #{$size} is not defined in $breakpoints map.";
+    }
+}
+
+@mixin fluid-font-size($min, $vw, $max) {
+    font-size: clamp(#{$min}, #{$vw}vw, #{$max});
+}
+
+@mixin preset($name) {
+    body[data-preset="#{$name}"] & {
+        @content;
+    }
+}

@@ -1,0 +1,62 @@
+/* SPDX-License-Identifier: MIT */
+/* Copyright (c) 2025 Vaclav Mach (Bastl Instruments) */
+
+@use "@bastl-react/styles-base" as *;
+
+.colorPicker {
+    display: grid;
+    margin: 0;
+    padding: 0;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 4px;
+
+    li {
+        list-style: none;
+    }
+}
+
+.tile {
+    @include buttonReset();
+    display: block;
+    width: 2em;
+    height: 2em;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    line-height: 10em;
+    transition: outline 0.1s;
+    text-align: left;
+    outline: 2px solid transparent;
+    transition: 0.2s;
+    outline-offset: 1px;
+
+    &Active {
+        z-index: 5;
+        box-shadow: 0 0 0.8em 0 var(--tile-color);
+        outline: 2px solid $light-bg-color;
+    }
+}
+
+.customColor {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 8px;
+
+
+    &+& {
+        margin-top: 4px;
+    }
+
+    input {
+        outline: none;
+        background: transparent;
+        border: $border-width solid currentColor;
+        color: $dark-bg-color;
+        font-family: inherit;
+        font-size: inherit;
+        padding: 0.2em 0.4em;
+        width: 6em;
+        border-radius: 0.3em;
+    }
+}

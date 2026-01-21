@@ -1,0 +1,78 @@
+/* SPDX-License-Identifier: MIT */
+/* Copyright (c) 2025 Vaclav Mach (Bastl Instruments) */
+
+@use "@bastl-react/styles-base" as *;
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1.0;
+    }
+
+    50% {
+        opacity: 0.9;
+    }
+}
+
+@keyframes show {
+    0% {
+        transform: translateX(-50%) scaleY(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+@keyframes hidden {
+
+    0%,
+    100% {
+        transform: translateX(-50%) scaleY(0);
+    }
+}
+
+.bubble {
+    position: fixed;
+    padding: 1em 1.5em;
+    background-color: rgba($dark-bg-color, 0.9);
+    border-radius: 0.8em;
+    box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(2px);
+    color: #ddd;
+    z-index: 200;
+    animation: show 0.8s ease-in 0.5s both;
+    // animation: pulse 2s infinite ease-in-out, show 0.3s ease-in 0.5s both;
+    animation-timing-function: ease-in-out;
+    //text-transform: none;
+    text-align: center;
+
+    b {
+        @include headerFont;
+    }
+
+    body:global(.overlay-active) & {
+        animation: hidden 4s both;
+    }
+
+    a,
+    a:visited {
+        font-family: $font-family;
+        font-weight: 400;
+        color: inherit;
+    }
+
+    &.bottom {
+        bottom: 2em;
+        left: 50%;
+        transform: translateX(-50%);
+        transition: transform 0.3s ease-in-out;
+
+        body:global(.app-dialog-open) & {
+            left: calc(50% - var(--scrollbar-width) / 2);
+        }
+    }
+
+
+}

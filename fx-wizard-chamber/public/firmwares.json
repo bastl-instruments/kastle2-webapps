@@ -1,0 +1,9 @@
+{
+    "list": [
+        {
+            "default": true,
+            "filename": "firmwares/kastle2-fx-wizard-1.6.uf2",
+            "output": "kastle2-fx-wizard-1.6-custom.uf2"
+        }
+    ]
+}

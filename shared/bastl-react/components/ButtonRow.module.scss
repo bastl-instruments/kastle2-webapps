@@ -1,0 +1,107 @@
+/* SPDX-License-Identifier: MIT */
+/* Copyright (c) 2025 Vaclav Mach (Bastl Instruments) */
+
+@use "@bastl-react/styles-base" as *;
+
+.buttonRow {
+    display: flex;
+    border: $border-width solid currentColor;
+    border-radius: 0.66em;
+    position: relative;
+    overflow: hidden;
+    background-color: #fff;
+    transition: box-shadow 0.3s;
+
+    $last-has-border: false;
+
+    &>* {
+        min-width: 1.75em;
+        min-height: 1.75em;
+        position: relative;
+        transition: background-color 0.3s, box-shadow 0.3s;
+
+        &>svg,
+        &>span{
+            position: relative;
+            z-index: 10;
+        }
+
+        @if(not $last-has-border) {
+            &::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                opacity: 0;
+                transition: opacity 0.3s;
+                z-index: 0;
+            }
+
+            &:nth-last-child(1) {
+                &::after {
+                    background-image: linear-gradient(to left, $primary-color 20%, #fff 100%);
+                }
+            }
+
+            &:nth-last-child(2) {
+                &::after {
+                    background-image: linear-gradient(to right, $primary-color 80%, #fff 100%);
+                }
+            }
+
+            &:nth-last-child(1):hover,
+            &:nth-last-child(2):hover {
+                box-shadow: none !important;
+                background-color: transparent !important;
+
+                &::after {
+                    opacity: 1;
+                }
+            }
+
+
+        }
+
+        &:hover {
+            z-index: 1;
+            background-color: $primary-color;
+            box-shadow: 0 0 0.5em 0 $primary-color;
+        }
+    }
+
+    &>*:first-child {
+        padding-left: 0.2em !important;
+    }
+
+    &>*:last-child {
+        padding-left: 0.3em !important;
+
+        @if($last-has-border) {
+            padding-right: 0.5em !important;
+        }
+
+        @else {
+            width: 2.5em;
+            padding-left: 1em !important;
+            padding-right: 0.2em !important;
+        }
+    }
+
+    @if($last-has-border) {
+        &>*+* {
+            border-left: $border-width solid currentColor !important;
+        }
+    }
+
+    @else {
+        &>*+*:not(:last-child) {
+            border-left: $border-width solid currentColor !important;
+        }
+    }
+}
+
+.shadow {
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.5);
+}

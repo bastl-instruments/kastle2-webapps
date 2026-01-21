@@ -1,0 +1,28 @@
+/* SPDX-License-Identifier: MIT */
+/* Copyright (c) 2025 Vaclav Mach (Bastl Instruments) */
+
+@use "@bastl-react/styles-base" as *;
+
+.container {
+    display: flex;
+    align-items: flex-end;
+    gap: 0.5em;
+    @extend .no-select;
+}
+
+.logo {
+    width: 3.48em;
+    flex-shrink: 0;
+}
+
+.title {
+    @include headerFont();
+    font-size: 1em;
+    line-height: 0.91;
+    margin: 0 !important;
+    padding: 0;
+    position: relative;
+    top: 0.1em;
+    letter-spacing: -0.04em;
+    white-space: nowrap;
+}

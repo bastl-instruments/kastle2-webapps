@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 64 64">
+  <!-- Generator: Adobe Illustrator 29.4.0, SVG Export Plug-In . SVG Version: 2.1.0 Build 152)  -->
+  <g id="lines">
+    <g>
+      <rect x=".0000001" y="39.15" width="64" height="4.7" fill="#ffe003"/>
+      <rect x=".0000001" y="29.650001" width="64" height="4.7" fill="#ffe003"/>
+      <rect x=".0000001" y="20.15" width="64" height="4.7" fill="#ffe003"/>
+    </g>
+  </g>
+  <g id="star">
+    <polygon points="40.0687925 40.0680933 55.2272387 31.9997676 40.0687925 23.9314419 32.0004668 8.772529 23.9321412 23.9314419 8.7727616 31.9997676 23.9321412 40.0680933 32.0004668 55.2274729 40.0687925 40.0680933" fill="#54bdec"/>
+  </g>
+</svg>

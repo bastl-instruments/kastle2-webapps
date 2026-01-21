@@ -1,0 +1,22 @@
+{
+  "name": "@bastl/react-components",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "index.js",
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-modal": "^3.16.3",
+    "uuid": "^11.0.5",
+    "bowser": "^2.11.0",
+    "@dnd-kit/core": "^6.3.1",
+    "@dnd-kit/sortable": "^10.0.0",
+    "classnames": "^2.5.1",
+    "loglevel": "^1.9.2",
+    "wavefile": "^11.0.0"
+  },
+  "peerDependencies": {
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
+  }
+}

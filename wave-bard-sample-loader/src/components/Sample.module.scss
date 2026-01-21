@@ -1,0 +1,79 @@
+/* SPDX-License-Identifier: MIT */
+/* Copyright (c) 2025 Vaclav Mach (Bastl Instruments) */
+
+@use "@bastl-react/styles-base" as *;
+
+.sample {
+    transition: opacity 0.3s, filter 0.3s;
+    display: flex;
+}
+
+.knob {
+    width: 1.5em !important;
+    height: 1.5em !important;
+    align-self: center;
+    margin-right: 0.5em !important;
+    transition: opacity 0.2s !important;
+
+    .sample.isDragging & {
+        opacity: 0;
+    }
+}
+
+.buttonRow {
+    flex-grow: 1;
+}
+
+.sampleProcessing {
+    opacity: 0.15;
+    cursor: wait;
+    filter: blur(2px);
+}
+
+.label {
+    flex-grow: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: inherit;
+    font-family: inherit;
+    display: block;
+    text-align: left;
+    border: 0;
+    background: none;
+    color: inherit;
+    font-size: 0.8em;
+    font-weight: inherit;
+    padding-left: 0.75em !important;
+    cursor: pointer;
+}
+
+.labelEditor {
+    background-color: #fff !important;
+    border: none;
+    border-left: $border-width solid $border-color;
+    font-family: inherit;
+    font-size: 0.8em;
+    font-weight: inherit;
+    color: #000;
+    outline: none;
+    width: 14em;
+    padding-right: 0.75em !important;
+    padding-left: 0.75em !important;
+    &:focus {
+        background-color: $primary-color !important;
+    }
+}
+
+.move {
+    cursor: grab !important;
+    @include touchDragHandle();
+}
+
+.isDragging {
+    z-index: 10;
+}
+
+.invalid {
+    color: $error-color;
+    opacity: 0.75;
+}

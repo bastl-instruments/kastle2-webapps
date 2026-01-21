@@ -1,0 +1,33 @@
+/* SPDX-License-Identifier: MIT */
+/* Copyright (c) 2025 Vaclav Mach (Bastl Instruments) */
+
+@use "@bastl-react/styles-base" as *;
+
+.filesDragOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(#eee, 0.8);
+    color: $dark-bg-color;
+    z-index: 50;
+    border-radius: $border-radius;
+    animation-name: fadeIn;
+    animation-duration: 0.1s;
+    animation-fill-mode: forwards;
+    backdrop-filter: blur(2px);
+
+    &.dark {
+        background-color: rgba($light-bg-color, 0.3);
+        color: #eee;
+    }
+}
+
+
+.filesDragOverlayLabel {
+    font-size: 2em;
+}

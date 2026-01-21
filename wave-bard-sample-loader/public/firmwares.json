@@ -1,0 +1,21 @@
+{
+    "list": [
+        {
+            "filename": "firmwares/kastle2-wave-bard-1.0-no-samples.uf2",
+            "output": "kastle2-wave-bard-1.0-oldversion-custom.uf2"
+        },
+        {
+            "filename": "firmwares/kastle2-wave-bard-1.1-no-samples.uf2",
+            "output": "kastle2-wave-bard-1.1-oldversion-custom.uf2"
+        },
+        {
+            "filename": "firmwares/kastle2-wave-bard-1.5-no-samples.uf2",
+            "output": "kastle2-wave-bard-1.5-custom.uf2"
+        },
+        {
+            "default": true,
+            "filename": "firmwares/kastle2-wave-bard-1.6-no-samples.uf2",
+            "output": "kastle2-wave-bard-1.6-custom.uf2"
+        }
+    ]
+}

@@ -1,0 +1,16 @@
+{
+    "list": [
+        {
+            "default": true,
+            "id": "factory-2025-04-08",
+            "name": "Factory",
+            "filename": "presets/factory-2025-04-08.wavebard"
+        },
+        {
+            "hidden": false,
+            "id": "citadel-by-oliver-torr-2025-11-20",
+            "name": "Citadel by Oliver Torr",
+            "filename": "presets/citadel-by-oliver-torr-2025-11-20.wavebard"
+        }
+    ]
+}

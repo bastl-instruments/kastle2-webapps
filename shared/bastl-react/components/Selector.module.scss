@@ -1,0 +1,129 @@
+/* SPDX-License-Identifier: MIT */
+/* Copyright (c) 2025 Vaclav Mach (Bastl Instruments) */
+
+@use "@bastl-react/styles-base" as *;
+@use "sass:math";
+
+.selector {
+    position: relative;
+    z-index: 20;
+
+    &.open {
+        z-index: 25;
+    }
+}
+
+.opener {
+    @include buttonReset();
+    border: $border-width solid $border-color;
+    border-radius: $border-radius;
+    width: 100%;
+    text-align: left;
+    display: flex;
+    cursor: pointer;
+    @extend .no-select;
+    align-items: stretch;
+
+    .selector.open & {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        border-bottom-color: transparent;
+        background-color: $dark-bg-color;
+    }
+}
+
+.arrow,
+.label,
+.value {
+    display: flex;
+    align-items: center;
+    min-height: calc(#{$input-height} - #{$border-width * 2});
+    padding: calc(#{$padding-vertical} - #{$border-width}) 0;
+    z-index: 15;
+    position: relative;
+}
+
+.label {
+    text-transform: uppercase;
+    padding-left: $padding-horizontal;
+    font-weight: 700;
+}
+
+.value {
+    flex-grow: 1;
+    text-align: right;
+    justify-content: flex-end;
+}
+
+.arrow {
+    width: 2.2em + $padding-horizontal;
+    padding-left: 1em;
+    padding-right: $padding-horizontal;
+    transition: transform 0.1s;
+    flex-shrink: 0;
+
+    .selector.open & {
+        transform: scaleY(-1);
+    }
+
+    svg {
+        display: block;
+        width: 100%;
+    }
+}
+
+.options {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding-top: $input-height - 0.1em;
+    z-index: 10;
+
+    transform-origin: 0 math.div($input-height, 2);
+    transform: scaleY(0);
+    transition: transform 0.1s, box-shadow 0.3s;
+    border-radius: $border-radius;
+
+
+    .selector.open & {
+        transform: none;
+        box-shadow: 0 0 2em rgba(0, 0, 0, 0.8);
+    }
+}
+
+.options ul {
+    background-color: $dark-bg-color;
+    padding: 0.2em 0 0.5em 0;
+    margin: 0;
+    list-style: none;
+    border: $border-width solid $border-color;
+    border-radius: 0 0 $border-radius $border-radius;
+    border-top-width: 0;
+    position: relative;
+    z-index: 10;
+}
+
+.option {
+    display: block;
+    width: 100%;
+    text-align: right;
+    padding: $padding-vertical 1.15em $padding-vertical $padding-horizontal;
+    cursor: pointer;
+    text-transform: none;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0.9em;
+    margin: 0.2em 0;
+
+    &:hover {
+        color: $primary-color;
+    }
+}
+
+.separator {
+    padding: 0.5em 1.2em 0 1.2em;
+    text-align: right;
+    color: #666;
+}

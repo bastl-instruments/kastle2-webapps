@@ -1,0 +1,11 @@
+/* SPDX-License-Identifier: MIT */
+/* Copyright (c) 2025 Vaclav Mach (Bastl Instruments) */
+
+@use "@bastl-react/styles-base" as *;
+
+.inputRow {
+    display: flex;
+    align-items: center;
+    margin: 0 0 $input-gap 0;
+    gap: $input-gap;
+}

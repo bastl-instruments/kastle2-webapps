@@ -1,0 +1,273 @@
+/* SPDX-License-Identifier: MIT */
+/* Copyright (c) 2025 Vaclav Mach (Bastl Instruments) */
+
+@use "@bastl-react/styles-base" as *;
+
+$base-padding-small: 1em;
+$base-padding-medium: 2em;
+
+@keyframes showWindow {
+    0% {
+        opacity: 0;
+        transform: translateY(2em);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes hideWindow {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-2em);
+    }
+}
+
+@keyframes showOverlay {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes hideOverlay {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes slideInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-3em);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(3em) scaleY(-1);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0) scaleY(-1);
+    }
+}
+
+
+.dialog {
+    z-index: 2000;
+    background-color: rgba(#333, 0.97);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    animation: showOverlay 0.3s both;
+    @include touchDragHandle();
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: $base-padding-small;
+
+    @include media(medium) {
+        padding: $base-padding-medium;
+    }
+
+    &.fullscreen {
+        justify-content: stretch;
+        align-items: stretch;
+        background-color: $primary-color;
+        padding: 0;
+    }
+
+    &.closing {
+        animation: hideOverlay 0.3s both;
+    }
+}
+
+.window {
+    outline: none;
+
+    .dialog:not(.fullscreen) & {
+        max-height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: stretch;
+    }
+
+    .dialog.fullscreen & {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: stretch;
+        justify-content: center;
+        flex-direction: column;
+    }
+}
+
+
+.container {
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: 100%;
+    flex-grow: 1;
+    padding: $base-padding-small;
+    display: flex;
+    flex-direction: column;
+    background-color: $dark-bg-color;
+
+    @include media(large) {
+        padding: $base-padding-medium;
+    }
+
+    .dialog.primary & {
+        background-color: $primary-color;
+        color: $dark-bg-color;
+        border-radius: $border-radius;
+        ;
+    }
+
+    .dialog.fullscreen & {
+        background-color: transparent;
+    }
+
+    .dialog.closing & {
+        animation: hideWindow 0.3s both;
+    }
+}
+
+
+.decorationTop,
+.decorationBottom {
+    margin: 0 auto;
+    color: $primary-color;
+    width: calc(100% - 3em); // for safari wtf
+    display: block;
+    @extend .no-select;
+}
+
+.decorationTop {
+    margin-bottom: 0.5em;
+    animation: slideInLeft 0.5s ease both;
+}
+
+.decorationBottom {
+    margin-top: 0.5em;
+    animation: slideInRight 0.5s ease both;
+}
+
+
+.content {
+    width: 100%;
+    position: relative;
+    max-width: 57em;
+    margin: auto auto;
+    outline: none;
+    min-height: min-content; // This allows content to take its natural height when it exceeds container
+    align-self: flex-start; // Ensures content starts from the top when overflowing 
+    text-transform: none;
+
+    .dialog.narrow & {
+        max-width: 30em;
+    }
+
+    .dialog.wide & {
+        max-width: 80em;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        margin: 0 0 0.5em 0;
+        padding: 0;
+    }
+
+    p {
+        margin: 0 0 1em 0;
+        padding: 0;
+    }
+}
+
+
+.bar {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    position: relative;
+    margin-top: 2em;
+
+    .dialog.fullscreen & {
+        margin: 0;
+        animation-name: fadeIn;
+        animation-duration: 0.3s;
+        animation-fill-mode: both;
+        padding: 1.5em 1em;
+
+        &::before {
+            content: "";
+            display: block;
+            position: absolute;
+            bottom: 100%;
+            left: 0;
+            right: 0;
+            height: 3em;
+            background-image: linear-gradient(to bottom, rgba($primary-color, 0), rgba($primary-color, 1));
+        }
+    }
+
+    @include media(medium) {
+        flex-direction: row;
+        gap: 3em;
+        justify-content: space-between;
+    }
+}
+
+.note,
+.buttons {
+    min-width: 30%;
+    flex-grow: 1;
+}
+
+.buttons {
+    display: flex;
+    gap: $input-gap;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+
+    .bar.hasNote & {
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
+}
+
+.note {
+    font-size: 0.8em;
+}

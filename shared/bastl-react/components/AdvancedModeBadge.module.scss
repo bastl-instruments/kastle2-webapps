@@ -1,0 +1,21 @@
+/* SPDX-License-Identifier: MIT */
+/* Copyright (c) 2025 Vaclav Mach (Bastl Instruments) */
+
+@use "@bastl-react/styles-base" as *;
+
+.advancedModeBadge {
+    background-color: $error-color;
+    color: #fff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 0.2em;
+    font-size: 0.8em;
+    text-align: center;
+    font-weight: bold;
+    
+    :global(.app-dialog-open) & {
+        padding-right: var(--scrollbar-width);
+    }
+}

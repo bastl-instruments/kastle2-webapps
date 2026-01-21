@@ -1,0 +1,64 @@
+/* SPDX-License-Identifier: MIT */
+/* Copyright (c) 2025 Vaclav Mach (Bastl Instruments) */
+
+@use "@bastl-react/styles-base" as *;
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 0.75;
+    }
+}
+
+.addBank {
+    @include buttonReset();
+    background-color: $light-bg-color;
+    opacity: 0.75;
+    transition: opacity 0.3s;
+    cursor: pointer;
+    padding: 1em;
+    min-height: 12.5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    animation: fadeIn 0.3s;
+    position: relative;
+    border-radius: $border-radius;
+
+    &:hover {
+        opacity: 1;
+    }
+}
+
+.icon {
+    width: 1em;
+    height: 1em;
+    margin-right: 0.5em;
+}
+
+.bankDecorationTop,
+.bankDecorationBottom {
+    position: absolute;
+    left: 1em;
+    right: 1em;
+
+    svg {
+        display: block;
+        width: 100%;
+    }
+}
+
+.bankDecorationTop {
+    bottom: 100%;
+    padding-bottom: 3px;
+}
+
+.bankDecorationBottom {
+    top: 100%;
+    padding-bottom: 3px;
+    transform: scaleY(-1);
+}

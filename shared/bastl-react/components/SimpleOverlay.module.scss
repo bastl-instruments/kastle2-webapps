@@ -1,0 +1,70 @@
+/* SPDX-License-Identifier: MIT */
+/* Copyright (c) 2025 Vaclav Mach (Bastl Instruments) */
+
+@use "@bastl-react/styles-base" as *;
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba($light-bg-color, 0.8);
+    z-index: 9999;
+    animation-name: fadeIn;
+    animation-duration: 0.3s;
+    justify-content: center;
+    align-items: center;
+    display: none;
+    backdrop-filter: blur(2px);
+    padding: 2em;
+
+    &.active {
+        display: flex;
+    }
+
+    &.error {
+        color: #fff;
+        z-index: 10000;
+    }
+}
+
+.inner {
+    opacity: 0;
+    text-align: center;
+
+    .overlay.error & {
+        background-color: $error-color;
+        max-width: 25em;
+        text-align: center;
+        padding: 1.25em;
+    }
+
+    .overlay.animated & {
+        display: block;
+        width: 9em;
+        white-space: nowrap;
+        text-align: left;
+    }
+
+    .overlay.active & {
+        animation-name: fadeIn;
+        animation-duration: 0.3s;
+        animation-delay: 0.3s;
+        animation-fill-mode: forwards;
+    }
+}
+
+.buttons {
+    margin-top: 1em;
+}

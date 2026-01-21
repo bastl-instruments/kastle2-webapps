@@ -1,0 +1,143 @@
+/* SPDX-License-Identifier: MIT */
+/* Copyright (c) 2025 Vaclav Mach (Bastl Instruments) */
+
+@use "@bastl-react/styles-base" as *;
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+$font-size: 1.33em;
+
+.header,
+.sample {
+    font-size: $font-size;
+}
+
+.bank {
+    @extend .no-select;
+    padding: $padding-vertical $padding-horizontal $padding-horizontal $padding-horizontal;
+    background-color: #fff;
+    color: $dark-bg-color;
+    border-radius: $border-radius;
+    box-shadow: 2px 2px 10px 0 rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s, filter 0.3s, opacity 0.3s;
+    animation: fadeIn 0.3s;
+    position: relative;
+
+    &Placeholder {
+        opacity: 0.2;
+        filter: blur(2px);
+    }
+
+    &Dragging {
+        box-shadow: 2px 2px 10px 0 rgba(0, 0, 0, 0.6);
+    }
+}
+
+.decorationTop,
+.decorationBottom {
+    position: absolute;
+    left: 1em;
+    right: 1em;
+
+    svg {
+        display: block;
+        width: 100%;
+    }
+}
+
+.decorationTop {
+    bottom: 100%;
+    padding-bottom: 3px;
+}
+
+.decorationBottom {
+    top: 100%;
+    padding-bottom: 3px;
+    transform: scaleY(-1);
+}
+
+.header {
+    @include headerFont();
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    padding: 0.4em calc(0.32em + #{$border-width}) 0.3em 0.3em;
+
+}
+
+.yellowHover {
+    transition: box-shadow 0.2s, background-color 0.2s;
+    box-shadow: 0 0 0.3em 0.3em rgba($primary-color, 0);
+    &:hover {
+        box-shadow: 0 0 0.3em 0.3em $primary-color;
+        background-color: $primary-color;
+    }
+}
+
+.headerIcon {
+    &:last-child {
+        margin-left: 0.1em;
+    }
+}
+
+.label {
+    flex-grow: 1;
+    min-width: 0;
+    font-size: 1.6em;
+    position: relative;
+    letter-spacing: -0.02em;
+
+    input {
+        width: 100%;
+        height: 100%;
+        font-size: inherit;
+        font-family: inherit;
+        border: 0;
+        background: none;
+        color: inherit;
+        letter-spacing: inherit;
+        font-weight: inherit;
+
+        &:focus {
+            outline: 3px solid $primary-color;
+        }
+    }
+}
+
+.tooltip {
+    @extend .tooltip;
+}
+
+.move {
+    cursor: grab !important;
+    @include touchDragHandle();
+}
+
+
+.samples {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.3em;
+}
+
+.addSamples {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0.6em 0.5em 0 0.5em;
+}
+
+.count {
+    opacity: 0.25;
+}

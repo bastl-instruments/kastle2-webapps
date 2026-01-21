@@ -1,0 +1,20 @@
+/* SPDX-License-Identifier: MIT */
+/* Copyright (c) 2025 Vaclav Mach (Bastl Instruments) */
+
+@use "@bastl-react/styles-base" as *;
+
+.banks {
+    display: grid;
+    gap: 6em 3em;
+    margin-top: 2em;
+    grid-template-columns: repeat(auto-fill, minmax(24em, 1fr));
+    padding-bottom: 5em;
+
+    @include media(xxlarge) {
+        grid-template-columns: repeat(auto-fill, minmax(29em, 1fr));
+    }
+}
+
+.sortableItemInteracting {
+    z-index: 100 !important;
+}

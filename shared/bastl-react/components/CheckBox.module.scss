@@ -1,0 +1,38 @@
+/* SPDX-License-Identifier: MIT */
+/* Copyright (c) 2025 Vaclav Mach (Bastl Instruments) */
+
+@use "@bastl-react/styles-base" as *;
+
+.checkbox {
+    display: block;
+    width: 1.5em;
+    height: 1.5em;
+    border: $border-width solid currentColor;
+    border-radius: 0.4em;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0.25em;
+        left: 0.2em;
+        width: 0.8em;
+        height: 0.5em;
+        border-bottom: 2px solid currentColor;
+        border-left: 2px solid currentColor;
+        transform: rotate(-45deg);
+        opacity: 0;
+        cursor: inherit;
+    }
+
+    &.checked::before {
+        opacity: 1;
+    }
+
+    &>input {
+        cursor: inherit;
+        opacity: 0;
+    }
+}
