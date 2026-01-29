@@ -161,6 +161,7 @@ function App({ noIntro = false }) {
                             className={style.growButton}
                             id="sequencer-length-selector"
                             label="Sequencer"
+                            grid
                             onChange={(val) => {
                                 alchemistContext.setSequencerLength(val);
                             }}

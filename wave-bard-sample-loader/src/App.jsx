@@ -244,6 +244,7 @@ function App({ noIntro = false }) {
                             />
                         </InputRow>
                         <Selector
+                            grid
                             id="sequencer-length-selector"
                             label="Sequencer"
                             className={style.control}

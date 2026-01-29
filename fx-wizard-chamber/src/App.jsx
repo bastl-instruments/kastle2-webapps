@@ -148,6 +148,7 @@ function App({ noIntro = false }) {
                     </InputRow>
                     <InputRow>
                         <Selector
+                            grid
                             className={style.growButton}
                             id="sequencer-length-selector"
                             label="Sequencer"

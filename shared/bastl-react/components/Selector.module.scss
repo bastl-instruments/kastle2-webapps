@@ -92,7 +92,8 @@
     }
 }
 
-.options ul {
+.groups,
+.options>ul {
     background-color: $dark-bg-color;
     padding: 0.2em 0 0.5em 0;
     margin: 0;
@@ -102,6 +103,18 @@
     border-top-width: 0;
     position: relative;
     z-index: 10;
+}
+
+.group>ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.hasGrid .options>ul,
+.hasGrid .group>ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(max(12em, 25%), 1fr));
 }
 
 .option {

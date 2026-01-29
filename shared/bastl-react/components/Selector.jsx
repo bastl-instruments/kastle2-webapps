@@ -9,7 +9,23 @@ import styles from './Selector.module.scss';
 import ArrowDown from '@bastl-react/icons/ArrowDown';
 import generateId from '@bastl-react/utils/generateId';
 
-function Selector({ label, className, options, multiple, value, onChange, id }) {
+function SelectorOption({ option, checked, htmlType, htmlName, onChange }) {
+    return (
+        <li key={option.value}>
+            <label className={classNames(styles.option, { [styles.checked]: checked })}>
+                {option.label}
+                <CheckBox
+                    type={htmlType}
+                    name={htmlName}
+                    value={checked}
+                    onChange={onChange}
+                />
+            </label>
+        </li>
+    );
+}
+
+function Selector({ label, className, options, multiple, value, onChange, id, grid = false }) {
 
     const htmlType = !multiple ? 'radio' : 'checkbox';
     const htmlName = useMemo(() => id ? `${id}-selector` : generateId(), [id]);
@@ -33,7 +49,8 @@ function Selector({ label, className, options, multiple, value, onChange, id }) 
         <div
             className={classNames(styles.selector, className, {
                 [styles.open]: isOpen,
-                [styles.multiple]: multiple
+                [styles.multiple]: multiple,
+                [styles.hasGrid]: grid,
             })}
             id={id}
             ref={ref}
@@ -55,17 +72,10 @@ function Selector({ label, className, options, multiple, value, onChange, id }) 
                 </span>
             </button>
             <div className={styles.options}>
-                <ul>
-                    {options.map((option) => {
+                {(() => {
+                    const hasSeparators = options.some(option => option.separator);
 
-                        if (option.separator) {
-                            return (
-                                <li key={option.label} className={styles.separator}>
-                                    {option.label}
-                                </li>
-                            );
-                        }
-
+                    const renderOption = (option) => {
                         const checked = multiple ? value.includes(option.value) : value === option.value;
                         const handleChange = () => {
                             if (multiple) {
@@ -78,26 +88,78 @@ function Selector({ label, className, options, multiple, value, onChange, id }) 
                             }
                         };
                         return (
-                            <li key={option.value}>
-                                <label className={classNames(styles.option, { [styles.checked]: checked })}>
-                                    {option.label}
-                                    <CheckBox
-                                        type={htmlType}
-                                        name={htmlName}
-                                        value={checked}
-                                        onChange={handleChange}
-                                    />
-                                </label>
-                            </li>
+                            <SelectorOption
+                                key={option.value}
+                                option={option}
+                                checked={checked}
+                                htmlType={htmlType}
+                                htmlName={htmlName}
+                                onChange={handleChange}
+                            />
                         );
-                    })}
-                </ul>
+                    };
+
+                    if (hasSeparators) {
+                        // Group options by separator
+                        const groups = [];
+                        let currentGroup = { separator: null, items: [] };
+
+                        options.forEach(option => {
+                            if (option.separator) {
+                                if (currentGroup.items.length > 0) {
+                                    groups.push(currentGroup);
+                                }
+                                currentGroup = { separator: option, items: [] };
+                            } else {
+                                currentGroup.items.push(option);
+                            }
+                        });
+                        if (currentGroup.items.length > 0) {
+                            groups.push(currentGroup);
+                        }
+                        return (
+                            <div className={styles.groups}>
+                                {groups.map((group, groupIndex) => (
+                                    <div key={groupIndex} className={styles.group}>
+                                        {group.separator && (
+                                            <div className={styles.separator}>
+                                                {group.separator.label}
+                                            </div>
+                                        )}
+                                        <ul>
+                                            {group.items.map(renderOption)}
+                                        </ul>
+                                    </div>
+                                ))}
+                            </div>
+                        );
+                    } else {
+                        // Render with no separators
+                        return (
+                            <ul>
+                                {options.map(renderOption)}
+                            </ul>
+                        );
+                    }
+                })()}
             </div>
         </div>
     );
 }
 
 const ValuePropType = PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number]))]);
+
+SelectorOption.propTypes = {
+    option: PropTypes.shape({
+        value: ValuePropType.isRequired,
+        label: PropTypes.string.isRequired,
+    }).isRequired,
+    checked: PropTypes.bool.isRequired,
+    htmlType: PropTypes.string.isRequired,
+    htmlName: PropTypes.string.isRequired,
+    onChange: PropTypes.func.isRequired,
+};
+
 Selector.propTypes = {
     options: PropTypes.arrayOf(
         PropTypes.shape({
@@ -111,6 +173,7 @@ Selector.propTypes = {
     label: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
     id: PropTypes.string,
+    grid: PropTypes.bool,
 };
 
 export default Selector;
