@@ -44,4 +44,11 @@ Anymade Studio
 
 ## License
 
-MIT
+**Code**  
+MIT license
+
+**Documentation**  
+CC BY SA 4.0 license
+
+**Graphic elements (logo and other visuals)**  
+All rights reserved
