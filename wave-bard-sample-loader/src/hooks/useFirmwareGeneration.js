@@ -34,7 +34,7 @@ function useFirmwareGeneration() {
         const firmwareArray = generateBinaryData(waveBardContext);
         const blob = new Blob([firmwareArray], { type: 'application/octet-stream' });
         // Offer for download
-        saveAs(blob, 'USER_DATA.bin');
+        saveAs(blob, 'SAMPLES.bin');
     };
 
     return {
