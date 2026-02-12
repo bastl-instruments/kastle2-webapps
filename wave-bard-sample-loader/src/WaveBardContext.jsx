@@ -5,6 +5,7 @@ import { createContext, useState, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { waveBardScales } from './data/scales';
 import { waveBardRhythms } from './data/rhythms';
+import { defaultAudioProcessing } from './data/audioProcessing';
 
 
 const WaveBardContext = createContext();
@@ -18,16 +19,7 @@ const WaveBardContextProvider = ({ children }) => {
     const [bitDepth, setBitDepth] = useState(16);
     const [sampleRate, setSampleRate] = useState(44100);
     const [name, setName] = useState('Default');
-    const [audioProcessing, setAudioProcessing] = useState({
-        fadeIn: false,
-        fadeInSeconds: 0.005, // s
-        fadeOut: false,
-        fadeOutSeconds: 0.005, // s
-        trim: false, // trims quiet
-        trimDbs: -48, // dB
-        normalize: false,
-        normalizeDbs: -0.1 // dB
-    });
+    const [audioProcessing, setAudioProcessing] = useState(defaultAudioProcessing);
 
     // Determine if any audio processing is enabled
     const audioProcessingEnabled = useMemo(() => {

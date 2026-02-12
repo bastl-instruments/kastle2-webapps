@@ -16,6 +16,7 @@ import xeatPresets from '../xeatPresets';
 import decodeXeat from '@bastl-react/utils/decodeXeat';
 import { WaveBardContext } from '../WaveBardContext.jsx';
 import { defaultSequencerLength } from '@bastl-react/data/sequencer.js';
+import { defaultAudioProcessing } from '../data/audioProcessing.js';
 
 const emptyPreset = {
     id: 'empty',
@@ -147,7 +148,7 @@ export default function usePresets() {
                 setBitDepth(16);
                 setSampleRate(44100);
                 setName('Empty Preset');
-                setAudioProcessing(true);
+                setAudioProcessing(defaultAudioProcessing);
             }
         }
         return () => {

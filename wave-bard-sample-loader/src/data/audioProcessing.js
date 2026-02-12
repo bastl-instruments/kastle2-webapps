@@ -1,6 +1,18 @@
 // SPDX-License-Identifier: MIT
 // Copyright (c) 2025 Vaclav Mach (Bastl Instruments)
 
+export const defaultAudioProcessing =
+{
+    fadeIn: false,
+    fadeInSeconds: 0.005, // s
+    fadeOut: false,
+    fadeOutSeconds: 0.005, // s
+    trim: false, // trims quiet
+    trimDbs: -48, // dB
+    normalize: false,
+    normalizeDbs: -0.1 // dB
+};
+
 // Audio processing configuration options
 export const audioProcessingOptions = [
     {

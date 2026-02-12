@@ -43,7 +43,7 @@ import { workfileExtension } from './utils/workFile';
 // Data
 import { waveBardScales } from './data/scales';
 import { waveBardRhythms } from './data/rhythms';
-import { audioProcessingOptions } from './data/audioProcessingOptions';
+import { audioProcessingOptions } from './data/audioProcessing';
 import { sequencerLengths } from '@bastl-react/data/sequencer';
 
 // App hooks
