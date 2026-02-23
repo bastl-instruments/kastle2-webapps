@@ -21,7 +21,9 @@ const sharedScales = [
     { id: generateId(), name: 'Hungarian Minor', semitones: 0b110111010101 },
     { id: generateId(), name: 'Neapolitan Major', semitones: 0b101111010011 },
     { id: generateId(), name: 'Neapolitan Minor', semitones: 0b110111010011 },
-    { id: generateId(), name: 'Pentatonic', semitones: 0b010101001010 },
+    { id: generateId(), name: 'Pentatonic', semitones: 0b001010010101 },
+    { id: generateId(), name: 'Dorian', semitones: 0b011010101101 },
+    { id: generateId(), name: 'Locrian', semitones: 0b010101101011 },
     // Common chords
     { id: generateId(), name: 'Diminished', semitones: 0b000010010010 },
     { id: generateId(), name: 'Augmented', semitones: 0b000100010001 },
