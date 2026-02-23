@@ -333,6 +333,9 @@ function ScalesEditor({ scales, setScales, isOpen, onCloseClick, defaultScales }
                     </div>
                 </SortableContext>
             </DndContext>
+            <div className={styles.scalesInfo}>
+                The scale names are for an illustrative purpose only,<br /> the actual scale is defined by the semitones.
+            </div>
         </Dialog>
     );
 };

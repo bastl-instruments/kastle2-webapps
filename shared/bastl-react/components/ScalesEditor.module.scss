@@ -16,8 +16,16 @@ $black-key-color: $light-bg-color;
     gap: $border-width;
     margin: 0;
     list-style: none;
-    padding: 0 0 3em 0; // to scroll beyond the yellow shadow
+    padding: 0 0 1.5em 0;
     color: #fff;
+}
+
+.scalesInfo {
+    @extend .no-select;
+    padding: 0 0 2em 0; // to scroll beyond the yellow shadow
+    color: $light-bg-color;
+    font-size: 0.8em;
+    text-align: center;
 }
 
 .scale {
@@ -125,10 +133,10 @@ $black-key-color: $light-bg-color;
     text-align: left;
     font-weight: 700;
     text-transform: uppercase;
-    padding:0.6em 0.3em;
+    padding: 0.6em 0.3em;
     font-family: inherit;
     font-size: inherit;
-    border:$border-width solid $dark-bg-color;
+    border: $border-width solid $dark-bg-color;
     margin: 0 1em;
 
     &:focus {
@@ -137,8 +145,9 @@ $black-key-color: $light-bg-color;
     }
 }
 
-.play{
+.play {
     font-size: 1.3em;
+
     .scaleInvalid & {
         color: $error-color;
     }
