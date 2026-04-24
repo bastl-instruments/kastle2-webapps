@@ -8,6 +8,10 @@
             "default": true,
             "filename": "firmwares/kastle2-alchemist-1.6.uf2",
             "output": "kastle2-alchemist-1.6-custom.uf2"
+        },
+        {
+            "filename": "firmwares/kastle2-alchemist-draft-20260424.uf2",
+            "output": "kastle2-alchemist-draft-custom.uf2"
         }
     ]
 }
