@@ -1,13 +1,13 @@
 {
     "list": [
         {
-            "default": true,
             "filename": "firmwares/kastle2-fx-wizard-1.6.uf2",
             "output": "kastle2-fx-wizard-1.6-custom.uf2"
         },
         {
-            "filename": "firmwares/kastle2-fx-wizard-draft-20260424.uf2",
-            "output": "kastle2-fx-wizard-draft-custom.uf2"
+            "default": true,
+            "filename": "firmwares/kastle2-fx-wizard-1.7.uf2",
+            "output": "kastle2-fx-wizard-1.7-custom.uf2"
         }
     ]
 }

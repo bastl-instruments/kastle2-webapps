@@ -13,13 +13,13 @@
             "output": "kastle2-wave-bard-1.5-custom.uf2"
         },
         {
-            "default": true,
             "filename": "firmwares/kastle2-wave-bard-1.6-no-samples.uf2",
             "output": "kastle2-wave-bard-1.6-custom.uf2"
         },
         {
-            "filename": "firmwares/kastle2-wave-bard-no-samples-draft-20260424.uf2",
-            "output": "kastle2-wave-bard-draft-custom.uf2"
+            "default": true,
+            "filename": "firmwares/kastle2-wave-bard-1.7-no-samples.uf2",
+            "output": "kastle2-wave-bard-1.7-custom.uf2"
         }
     ]
 }
